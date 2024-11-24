@@ -1,0 +1,28 @@
+context:
+  expressions:
+    change_algorithm:
+      - "@modify @selector algorithm (to) [$algorithm:algorithm, random]"
+      - "@selector @modify algorithm (to) [$algorithm:algorithm, random]"
+    algo_percents:
+      - "@modify @selector random weights $algorithm:algo_name
+        $pv.Percent:algo_percent"
+    brightness:
+      - "@selector @modify algorithm (to) $pv.Percent:percent_amount"
+      - "@modify @selector brightness (to) $pv.Percent:percent_amount"
+      - $brightness_changes:brightness_direction @selector
+        $pv.Percent:percent_amount
+    sleep:
+      - "@selector (go back to) sleep"
+  slots:
+    algorithm:
+      - flames
+      - firefly
+    brightness_changes:
+      - brighten
+      - dim
+  macros:
+    selector:
+      - storm light
+    modify:
+      - change
+      - set
